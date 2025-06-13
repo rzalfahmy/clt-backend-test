@@ -33,7 +33,7 @@ Any other useful feature will be respected.
 
 
 ### Submission
-The deadline for this assignment is 3 days from the date you receive the email about this assignment. Please ensure you complete the assignment within this timeframe.
+Please note that the specific deadline for this assignment will be provided in the email. Kindly ensure that you complete the assignment within the timeframe stated.
 
 ### Demo
 Please attach a demo video or a live project link here. (Update this section when you submit your assignment)
