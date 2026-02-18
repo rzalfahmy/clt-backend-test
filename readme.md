@@ -92,7 +92,7 @@ This may be implemented as:
 - A modal, or
 - A dedicated conflict resolution page.
 
-## 3. Design Reference
+## 4. Design Reference
 
 A design reference is available in Figma:
 
@@ -100,7 +100,7 @@ A design reference is available in Figma:
 
 > The design is for reference only. Exact visual matching is not required.
 
-## 4. Evaluation Criteria
+## 5. Evaluation Criteria
 
 ### Main Evaluation
 
@@ -130,13 +130,13 @@ A design reference is available in Figma:
 - Implementing
 - Any meaningful enhancements will be considered positively
 
-## 5. Submission
+## 6. Submission
 
 The deadline will be provided via email.  
 Please ensure submission within the specified timeframe.
 
 
-## 6. Demo
+## 7. Demo
 
 Include one of the following with your submission:
 
