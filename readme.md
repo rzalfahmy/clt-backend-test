@@ -52,7 +52,7 @@ If a layup with the same `name` already exists under the same supplier:
 If:
 
 - A layer with the same `layer_order` exists within that layup,
-- **AND** one or more fields differ (`thickness`, `width`, `angle`, `grade_id`),
+- **AND** one or more fields differ (`thickness`, `width`, `angle`),
 
 → This must be treated as a conflict.
 
