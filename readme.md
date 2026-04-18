@@ -150,6 +150,13 @@ MAIL_FROM_NAME="CLT Toolbox"
 
 ---
 
+## Demo
+
+Video demo:
+https://drive.google.com/drive/folders/1HEZmD6SybNTTZocZDVvopQ9W2DjXA3xV?usp=sharing
+
+---
+
 ## Author
 
 Rizal Fahmi
