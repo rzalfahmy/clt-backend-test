@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ================= BASE ================= */
+@layer base {
+    body {
+        background-color: #09090b;
+        color: #f5f5f4;
+        background-image:
+            radial-gradient(
+                circle at top left,
+                rgba(251, 191, 36, 0.16),
+                transparent 32%
+            ),
+            radial-gradient(
+                circle at top right,
+                rgba(45, 212, 191, 0.12),
+                transparent 28%
+            ),
+            linear-gradient(180deg, #0c0a09 0%, #1c1917 100%);
+    }
+
+    input,
+    textarea,
+    select {
+        background-color: #1c1917;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #78716c;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #f59e0b;
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+/* ================= COMPONENTS ================= */
+@layer components {
+    .shell {
+        @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .panel {
+        @apply rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/20 backdrop-blur;
+    }
+
+    .panel-soft {
+        @apply rounded-2xl border border-white/10 bg-stone-900/70;
+    }
+
+    .field {
+        @apply mt-2 w-full rounded-2xl border border-white/10 bg-stone-900 px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:border-amber-400 focus:outline-none;
+    }
+
+    .label {
+        @apply text-sm font-medium text-stone-200;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-2xl bg-amber-400 px-4 py-2.5 text-sm font-semibold text-stone-950 hover:bg-amber-300;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center rounded-2xl border border-rose-400/30 bg-rose-500/10 px-4 py-2.5 text-sm font-semibold text-rose-200 hover:bg-rose-500/20;
+    }
+
+    .stat-card {
+        @apply rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6;
+    }
+}

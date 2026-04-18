@@ -1,155 +1,156 @@
-# Feature Test Assignment
+# CLT Toolbox – Backend Feature Test
 
-## 1. Instructions
+## Gambaran Singkat
 
-- Clone or fork this repository.
-- Create a new branch: `{user}-assignment`.
-- Invite **@ikhsan017** and **@dhiaaziz** as collaborators.
-- Follow the setup instructions provided in the repository before running the project.
+Project ini merupakan hasil pengerjaan saya untuk **Backend Feature Test CLT Toolbox**.
 
-## 2. Feature Requirements
+Aplikasi ini dibuat menggunakan Laravel, dengan fokus utama untuk mengelola:
 
-### Core Features (Main Criteria)
+* Supplier
+* Layup (struktur CLT)
+* Layer (lapisan dalam layup)
 
-- [ ] CRUD Suppliers
-- [ ] CRUD CLT Layups (nested under Supplier)
-- [ ] CRUD CLT Layers (nested under Layup)
+Relasi data:
 
-The structure should properly reflect the hierarchy:
+```
 Supplier → Layups → Layers
-
-### Data Model (ERD)
-
-Below is the Entity Relationship Diagram (ERD) representing the data structure:
-
-![ERD](./erd-new.png)
-
-### Import / Export (Main Criteria)
-
-- [ ] **Export by Supplier**
-    - Must include: Supplier + all related Layups + all related Layers
-
-- [ ] **Import by Supplier**
-    - Must create and/or update Layups and Layers under the specified supplier
-
-Format is flexible (JSON / CSV / Excel, etc.). JSON format is completely acceptable.
-
-## 3. Feature: Conflict Resolution (Bonus – Important)
-
-During import, conflicts may occur when incoming data differs from existing records.
-
-### Conflict Detection Rules
-
-#### 1. Layup-Level Conflict
-
-If a layup with the same `name` already exists under the same supplier:
-
-- Treat it as the same layup candidate.
-- Do **not** automatically create a new layup.
-
-#### 2. Layer-Level Conflict
-
-If:
-
-- A layer with the same `layer_order` exists within that layup,
-- **AND** one or more fields differ (`thickness`, `width`, `angle`),
-
-→ This must be treated as a conflict.
+```
 
 ---
 
-### Required Conflict Handling
+## Fitur yang Dikerjakan
 
-You must implement a clearly defined conflict resolution strategy.
+### Fitur Utama
 
-At minimum, support **one** of the following:
-
-- **Overwrite Existing**  
-  (Incoming data replaces current data)
-
-- **Skip Conflict**  
-  (Keep current data, ignore incoming change)
-
-- **Duplicate Layup**  
-  (Create a new layup with a suffix such as `name (imported)`)
-
-- **Reject Entire Import**  
-  (Abort and return a detailed conflict report)
+* CRUD Supplier
+* CRUD Layup (berdasarkan supplier)
+* CRUD Layer (berdasarkan layup)
 
 ---
 
-### Advanced Conflict Resolution (UI-Based – Bonus)
+### Import & Export
 
-For additional bonus points, implement a **manual conflict resolution interface** similar to GitHub merge conflict resolution.
+* Export data supplier lengkap (termasuk semua layup & layer) dalam format JSON
+* Import data JSON ke dalam supplier
+* Data akan otomatis:
 
-Expected behavior:
+  * membuat data baru, atau
+  * mengupdate data yang sudah ada
 
-- Display **Existing Version (Current Data)** and  
-  **Incoming Version (Imported Data)** side-by-side
-- Highlight field-level differences
-- Allow the user to choose:
-    - ✅ Keep Existing
-    - ✅ Accept Incoming
-- Support resolving conflicts one-by-one
-- Provide navigation (e.g., “1 of 3 discrepancies”)
+---
 
-This may be implemented as:
+### Penanganan Konflik (Conflict Resolution)
 
-- A modal, or
-- A dedicated conflict resolution page.
+Konflik terjadi jika:
 
-## 4. Design Reference
+* Layup dengan nama yang sama sudah ada
+* Layer dengan `layer_order` yang sama tapi data berbeda
 
-A design reference is available in Figma:
+Strategi yang digunakan:
 
-[Figma Design File](https://www.figma.com/design/odWJ887r00aslmSFPIHMCx/SPEC-Toolbox---Feature-Test?node-id=11001-35&t=XUggOaUUi9p8jGFG-1)
+* Overwrite data lama (default)
+* Skip jika tidak ingin ditimpa (opsional)
 
-> The design is for reference only. Exact visual matching is not required.
+---
 
-## 5. Evaluation Criteria
+### Authentication
 
-### Main Evaluation
+* Login & Logout
+* Forgot Password (menggunakan Mailtrap)
 
-- Correct implementation of the required features
+---
 
-### Bonus Evaluation
+### Tampilan
 
-**Architecture & Design Patterns**
+* Menggunakan custom dark theme
+* UI dibuat sederhana, fokus ke fungsi utama
 
-- Use Repository and/or Service pattern
-- Bind interfaces via a Service Provider
+---
 
-**Laravel Best Practices**
+## Cara Menjalankan Project
 
-- Form Request validation
-- Policies or Gates for authorization
-- Proper use of Route Model Binding
-- Clean, maintainable code following Laravel conventions
+### 1. Install dependency
 
-**Automated Testing**
+```bash
+composer install
+```
 
-- Unit tests (validation, services, repositories)
-- Feature tests (CRUD and import/export flows)
+---
 
-**Additional Improvements**
+### 2. Copy file environment
 
-- Any meaningful enhancements will be considered positively
+```bash
+cp .env.example .env
+```
 
-## 6. Submission
+---
 
-The deadline will be provided via email.  
-Please ensure submission within the specified timeframe.
+### 3. Generate app key
 
+```bash
+php artisan key:generate
+```
 
-## 7. Demo
+---
 
-Include one of the following with your submission:
+### 4. Setup database
 
-- A demo video (recommended), or
-- A live project link
+Buat database di MySQL (XAMPP/phpMyAdmin):
 
-Ensure the demo clearly showcases:
+```
+backend_clt
+```
 
-- CRUD functionality
-- Import / Export feature
-- Conflict resolution behavior
+Lalu jalankan:
+
+```bash
+php artisan migrate
+```
+
+---
+
+### 5. Jalankan aplikasi
+
+```bash
+php artisan serve
+```
+
+Buka di browser:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## Konfigurasi Email (Forgot Password)
+
+Project ini menggunakan **Mailtrap** untuk testing email.
+
+Isi di `.env`:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="test@example.com"
+MAIL_FROM_NAME="CLT Toolbox"
+```
+
+---
+
+## Catatan
+
+* Asset frontend sudah di-build → tidak perlu menjalankan `npm run dev`
+* Folder `vendor` dan `node_modules` tidak disertakan (cukup jalankan `composer install`)
+* Database tidak disertakan → gunakan `php artisan migrate`
+
+---
+
+## Author
+
+Rizal Fahmi
+https://rzalfahmy.github.io/ 
