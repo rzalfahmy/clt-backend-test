@@ -100,12 +100,12 @@ img,svg,video,canvas,audio,iframe,embed,object {
                                         Log in
                                     </a>
                                     @if (Route::has('register'))
-
+                                        <a
                                             href="{{ route('register') }}"
                                             class="text-xl rounded-md py-2 text-gray-200 ring-1 ring-transparent transition hover:text-white  focus:outline-none focus-visible:ring-[#FF2D20] dark:text-gray-200 dark:hover:text-white"
                                         >
                                             Register
-
+                                        </a>
                                     @endif
                                 @endguest
                             </div>
